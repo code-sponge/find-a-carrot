@@ -1,0 +1,104 @@
+:root {
+  /* font size */
+  --font-large: 70px;
+  --font-medium: 50px;
+  --font-regular: 40px;
+  /* border size */
+  --border-size: 4.5px;
+  --border-radius-size: 10px;
+  /* animation */
+  --animation-duration: 250ms;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-image: url(/img/background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.statusBoard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.playBtn {
+  background-color: bisque;
+  width: 80px;
+  height: 80px;
+  outline: none;
+  border: var(--border-size) solid black;
+  border-radius: var(--border-radius-size);
+  font-size: var(--font-regular);
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all var(--animation-duration) ease;
+}
+.playBtn:hover {
+  transform: scale(1.1);
+}
+
+.timer {
+  background-color: white;
+  border: var(--border-size) solid black;
+  border-radius: var(--border-radius-size);
+  font-size: var(--font-regular);
+  height: 70px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.counter {
+  background-color: lightsalmon;
+  width: 80px;
+  height: 80px;
+  border: var(--border-size) solid black;
+  border-radius: 50%;
+  font-size: var(--font-medium);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.field {
+  width: 90vw;
+  height: 40vh;
+  margin: auto;
+  margin-top: 250px;
+}
+
+.bug {
+  height: 80px;
+  width: 80px;
+  cursor: pointer;
+  transition: all var(--animation-duration) ease;
+}
+
+.bug:hover {
+  transform: scale(1.1);
+}
+
+.carrot {
+  height: 90px;
+  width: 90px;
+  cursor: pointer;
+  transition: all var(--animation-duration) ease;
+}
+
+.carrot:hover {
+  transform: scale(1.1);
+}
