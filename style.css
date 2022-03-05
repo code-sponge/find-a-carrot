@@ -1,5 +1,6 @@
 :root {
   /* font size */
+  --font-super-large: 100px;
   --font-large: 70px;
   --font-medium: 50px;
   --font-regular: 40px;
@@ -79,17 +80,21 @@ body {
   height: 40vh;
   margin: auto;
   margin-top: 250px;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
 }
 
+.field.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
 .bug {
   height: 80px;
   width: 80px;
   cursor: pointer;
   transition: all var(--animation-duration) ease;
-}
-
-.bug:hover {
-  transform: scale(1.1);
+  position: absolute;
 }
 
 .carrot {
@@ -97,8 +102,34 @@ body {
   width: 90px;
   cursor: pointer;
   transition: all var(--animation-duration) ease;
+  position: absolute;
 }
 
+.bug:hover,
 .carrot:hover {
   transform: scale(1.1);
+}
+
+.carrot.invisible {
+  display: none;
+}
+
+.message {
+  position: absolute;
+  transform: translate(50%, 30%);
+  background-color: black;
+  opacity: 0.9;
+  color: white;
+  font-size: var(--font-super-large);
+  height: 50%;
+  width: 50%;
+  margin: auto;
+  border-radius: var(--border-radius-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all var(--animation-duration) ease;
+}
+.message.invisible {
+  opacity: 0;
 }
