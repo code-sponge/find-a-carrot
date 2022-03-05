@@ -1,13 +1,21 @@
+/* global */
 const playBtn = document.querySelector('.playBtn');
 const controller = document.querySelector('.fa-solid ');
 const timer = document.querySelector('.timer');
 const message = document.querySelector('.message');
 const counter = document.querySelector('.counter');
 let myTimer;
-let sec = 10;
+let sec = 7;
 let remain = 10;
 
-/* field */
+/* BGM🎵 */
+mainBgm = new Audio('sound/bg.mp3');
+vicBgm = new Audio('sound/game_win.mp3');
+loseBgm = new Audio('sound/alert.wav');
+carrotPull = new Audio('sound/carrot_pull.mp3');
+bugPull = new Audio('sound/bug_pull.mp3');
+
+/* make a field */
 const field = document.querySelector('.field');
 const carrots = document.querySelectorAll('.carrot');
 const bugs = document.querySelectorAll('.bug');
@@ -42,19 +50,9 @@ playBtn.addEventListener('click', () => {
   counter.innerHTML = 10;
   myTimer = setInterval(myCallback, 1000);
   timer.style.color = 'black';
+  mainBgm.play();
+  mainBgm.loop = true;
 });
-
-/* click the carrot */
-for (const carrot of carrots) {
-  carrot.addEventListener('click', () => {
-    carrot.classList.add('invisible');
-    remain--;
-    counter.innerHTML = remain;
-    if (remain <= 0) {
-      endGame('You Win 😎🎉');
-    }
-  });
-}
 
 /* timer */
 function myCallback() {
@@ -64,23 +62,40 @@ function myCallback() {
   if (sec < 0) {
     endGame('You Lose 😂');
     timer.style.color = 'red';
+    loseBgm.play();
   } else if (controller.classList.contains('fa-play')) {
     clearInterval(myTimer);
-    sec = 10;
+    sec = 7;
     timer.innerHTML = '00:00';
     uncheckItem(carrots);
     remain = 10;
   }
 }
 
+/* click the carrots */
+for (const carrot of carrots) {
+  carrot.addEventListener('click', () => {
+    carrot.classList.add('invisible');
+    carrotPull.play();
+    remain--;
+    counter.innerHTML = remain;
+    if (remain <= 0) {
+      endGame('You Win 😎🎉');
+      vicBgm.play();
+    }
+  });
+}
+
+/* click the bugs */
 const bugsAll = document.querySelector('.bugs');
 bugsAll.addEventListener('click', () => {
   endGame('You Lose 😂');
+  bugPull.play();
 });
 
 function endGame(txt) {
   clearInterval(myTimer);
-  sec = 10;
+  sec = 7;
   timer.innerHTML = '00:00';
   controller.classList.remove('fa-stop');
   controller.classList.add('fa-play');
